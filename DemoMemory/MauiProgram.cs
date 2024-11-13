@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DrawnUi.Maui.Draw;
+using Microsoft.Extensions.Logging;
 using Telerik.Maui.Controls.Compatibility;
 
 namespace DemoMemory
@@ -10,6 +11,7 @@ namespace DemoMemory
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseTelerik()
+                .UseDrawnUi()
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
@@ -18,7 +20,7 @@ namespace DemoMemory
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

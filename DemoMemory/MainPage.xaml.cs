@@ -39,23 +39,65 @@ namespace DemoMemory
 
         private void Button_Clicked_1(object sender, EventArgs e)
         {
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 100; i++)
             {
                 Items.Add(new DataItem
                 {
                     Name = $"Name {i}",
-                    Item = new Items
+                    Item1 = new Items
                     {
                         Colors = GetRandomColor(),
                         Times = GetRandomTimes()
+                    },
+                    Item2 = new Items
+                    {
+                        Colors = GetRandomColor(),
+                        Times = GetRandomTimes()
+                    },
+                    //Item3 = new Items
+                    //{
+                    //    Colors = GetRandomColor(),
+                    //    Times = GetRandomTimes()
+                    //},
+                    //Item4 = new Items
+                    //{
+                    //    Colors = GetRandomColor(),
+                    //    Times = GetRandomTimes()
+                    //},
+                    //Item5 = new Items
+                    //{
+                    //    Colors = GetRandomColor(),
+                    //    Times = GetRandomTimes()
+                    //}
+                    //,
+                    //Item6 = new Items
+                    //{
+                    //    Colors = GetRandomColor(),
+                    //    Times = GetRandomTimes()
+                    //},
+                    //Item7 = new Items
+                    //{
+                    //    Colors = GetRandomColor(),
+                    //    Times = GetRandomTimes()
+                    //},
+                    //Item8 = new Items
+                    //{
+                    //    Colors = GetRandomColor(),
+                    //    Times = GetRandomTimes()
+                    //},
+                    HeaderItem = new HeaderItem
+                    {
+                        Name = $"Header {i}",
+                        Count = i
                     }
+
                 });
             }
         }
         private Dictionary<int, Color> GetColors()
         {
             var colors = new Dictionary<int, Color>();
-            for (var i = 0; i < 50; i++)
+            for (var i = 0; i < 1000; i++)
             {
                 colors.Add(i, GetRandomColor());
             }
@@ -88,6 +130,11 @@ namespace DemoMemory
         private string GetRandomTimes()
         {
             return times[random.Next(times.Count)];
+        }
+
+        private void Button_Clicked_2(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NewPage1());
         }
     }
 
