@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DemoMemory"
+    x:Name="this"
+    xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+    xmlns:dm="clr-namespace:DemoMemory"
+    x:Class="DemoMemory.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate
+                x:Key="personTemplate">
+                <Grid
+                    ColumnDefinitions="20"
+                    RowDefinitions="20">
+                    <Border
+                        BackgroundColor="Black" />
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout
+        x:Name="stackLayout">
+        <Button
+            Text="GC"
+            Clicked="Button_Clicked" />
+        <Button
+            Text="CollectData"
+            Clicked="Button_Clicked_1" />
+        <!--<dm:DynamicDataGrid
+            RenderMode="SkiaSharp"
+            x:Name="dynamicDataGrid"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding Data,Source={x:Reference this}}" />-->
+
+        <!--<local:DynamicDataGrid
+            x:Name="dataGrid" />-->
+        <telerik:RadDataGrid
+            x:Name="dataGrid"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding Items,Source={x:Reference this}}">
+            <telerik:RadDataGrid.Columns>
+                <telerik:DataGridTextColumn
+                    PropertyName="Name"
+                    HeaderText="Name" />
+                <telerik:DataGridTemplateColumn
+                    HeaderText="Age">
+                    <telerik:DataGridTemplateColumn.CellContentTemplate>
+                        <DataTemplate>
+                            <telerik:RadBorder
+                                BackgroundColor="{Binding Item.Colors}">
+                                <Label
+                                    Text="{Binding Item.Times}"
+                                    TextColor="Red" />
+                            </telerik:RadBorder>
+                        </DataTemplate>
+                    </telerik:DataGridTemplateColumn.CellContentTemplate>
+                </telerik:DataGridTemplateColumn>
+            </telerik:RadDataGrid.Columns>
+        </telerik:RadDataGrid>
+    </StackLayout>
+
+</ContentPage>
