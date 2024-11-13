@@ -6,7 +6,7 @@ namespace DemoMemory
     public partial class MainPage : ContentPage
     {
         public ObservableCollection<DataItem> Items { get; set; } = new ObservableCollection<DataItem>();
-
+        public string HeaderText { get; set; } = "Header";
         public MainPage()
         {
             InitializeComponent();
@@ -35,6 +35,8 @@ namespace DemoMemory
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
+            HeaderText = "HeaderText";
+            this.OnPropertyChanged(nameof(HeaderText));
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)
@@ -134,7 +136,7 @@ namespace DemoMemory
 
         private void Button_Clicked_2(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NewPage1());
+            //Navigation.PushAsync(new NewPage1());
         }
     }
 

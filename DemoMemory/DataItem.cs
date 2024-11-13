@@ -1,6 +1,8 @@
-﻿namespace DemoMemory;
+﻿using System.Dynamic;
 
-public partial class DataItem
+namespace DemoMemory;
+
+public partial class DataItem : DynamicObject
 {
     public string Name { get; set; }
     public HeaderItem HeaderItem { get; set; }

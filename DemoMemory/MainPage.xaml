@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:DemoMemory"
     x:Name="this"
+    xmlns:draw="http://schemas.appomobi.com/drawnUi/2023/draw"
     xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
     xmlns:dm="clr-namespace:DemoMemory"
     x:Class="DemoMemory.MainPage">
@@ -47,16 +48,40 @@
                 <telerik:DataGridTextColumn
                     PropertyName="Name"
                     HeaderText="Name" />
-                <telerik:DataGridTemplateColumn
-                    HeaderText="Column1">
+                <telerik:DataGridTemplateColumn>
+                    <telerik:DataGridTemplateColumn.HeaderContentTemplate>
+                        <DataTemplate>
+                            <Label
+                                Text="{Binding HeaderText, Source={x:Reference this}}"
+                                TextColor="Red" />
+                        </DataTemplate>
+                    </telerik:DataGridTemplateColumn.HeaderContentTemplate>
                     <telerik:DataGridTemplateColumn.CellContentTemplate>
                         <DataTemplate>
-                            <telerik:RadBorder
+                            <draw:Canvas>
+                                <draw:SkiaShape
+                                    BackgroundColor="Orange"
+                                    Margin="2"
+                                    CornerRadius="4"
+                                    WidthRequest="28"
+                                    HeightRequest="28"
+                                    AllowCaching="False"
+                                    HorizontalOptions="Center">
+                                    <local:SymbolLabel
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        HorizontalOptions="Center"
+                                        AllowCaching="False"
+                                        Text="{Binding Item1.Times}"
+                                        TextColor="Black" />
+                                </draw:SkiaShape>
+                            </draw:Canvas>
+                            <!--<telerik:RadBorder
                                 BackgroundColor="{Binding Item1.Colors}">
                                 <Label
                                     Text="{Binding Item1.Times}"
                                     TextColor="Red" />
-                            </telerik:RadBorder>
+                            </telerik:RadBorder>-->
                         </DataTemplate>
                     </telerik:DataGridTemplateColumn.CellContentTemplate>
                 </telerik:DataGridTemplateColumn>
@@ -137,7 +162,7 @@
                             </telerik:RadBorder>
                         </DataTemplate>
                     </telerik:DataGridTemplateColumn.CellContentTemplate>
-                </telerik:DataGridTemplateColumn>-->
+                </telerik:DataGridTemplateColumn> -->
             </telerik:RadDataGrid.Columns>
         </telerik:RadDataGrid>
     </StackLayout>
