@@ -31,7 +31,7 @@ namespace DemoMemory
             //    stackLayout.Remove(dataGrid);
             //    dataGrid = null;
             //}
-            Items.Clear();
+            Items?.Clear();
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
@@ -39,6 +39,10 @@ namespace DemoMemory
 
         private void Button_Clicked_1(object sender, EventArgs e)
         {
+            if (Items == null)
+            {
+                Items = new ObservableCollection<DataItem>();
+            }
             for (int i = 0; i < 100; i++)
             {
                 Items.Add(new DataItem
@@ -134,7 +138,7 @@ namespace DemoMemory
 
         private void Button_Clicked_2(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NewPage1());
+            Navigation.PushAsync(new pageClass1());
         }
     }
 
